@@ -1,0 +1,15 @@
+Name: John Doe
+Age: 35
+Occupation: Software Engineer
+
+Name: Jane Smith
+Age: 28
+Occupation: Marketing Manager
+
+Name: Alice Johnson
+Age: 42
+Occupation: HR Specialist
+
+Name: Diyorbek
+Age: 21
+Occupation: Programmer
