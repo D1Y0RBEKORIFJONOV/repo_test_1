@@ -70,7 +70,7 @@ func main() {
 		case 0:
 			fmt.Print("1.ReadFile\t\t2.AddUser\n0.help\t\t-1.exit\n")
 		case 1:
-			usrs, err := GetUserFromReadFile("15_uyga_vazifa/sample.txt")
+			usrs, err := GetUserFromReadFile("/home/diyorbek/go/src/repo_test_1/15_uyga_vazifa/sample.txt")
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -85,7 +85,7 @@ func main() {
 			fmt.Scan(&user.Age)
 			fmt.Print("Occupation: ")
 			fmt.Scan(&user.Occupation)
-			_ = PrintUserToFile("15_uyga_vazifa/sample.txt", user)
+			_ = PrintUserToFile("/home/diyorbek/go/src/repo_test_1/15_uyga_vazifa/sample.txt", user)
 		}
 	}
 }
