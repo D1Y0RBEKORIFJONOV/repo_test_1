@@ -1,0 +1,61 @@
+package main
+
+import (
+	"fmt"
+	"io"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+)
+
+func CopyFile(source string, dest string) error {
+	sourcefile, err := os.Open(source)
+	if err != nil {
+		return err
+	}
+	defer sourcefile.Close()
+	destfile, err := os.OpenFile(dest, os.O_WRONLY|os.O_CREATE, 0666)
+	if err != nil {
+		return err
+	}
+	defer destfile.Close()
+	_, err = io.Copy(destfile, sourcefile)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func GetCurrentFileName() string {
+	ex, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+
+	ext := strings.TrimPrefix(filepath.Ext(ex), ".")
+	fmt.Println(ext)
+	return filepath.Base(ex)
+}
+
+var CURRENT_FARMAT_FILE = ".go"
+var CURRENT_FILE_NAME string = GetCurrentFileName() + CURRENT_FARMAT_FILE
+
+func SaveTheCurrentStatOfTheFile(filename string) error {
+
+	var newFileName = fmt.Sprintf("%s_backup_%s.txt", filename, time.Now().Format("2006-01-02_15-04-05"))
+	err := CopyFile(filename, newFileName)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func main() {
+	err := SaveTheCurrentStatOfTheFile(CURRENT_FILE_NAME)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+}
