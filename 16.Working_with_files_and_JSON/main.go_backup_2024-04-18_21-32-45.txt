@@ -57,6 +57,10 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+	err = CopyFile(CURRENT_FILE_NAME, "/home/diyorbek/go/src/repo_test_1/16.Working_with_files_and_JSON/main.go_backup_2024-04-17_18-34-37.txt")
+	if err != nil {
+		fmt.Println(err)
 
+	}
 
 }

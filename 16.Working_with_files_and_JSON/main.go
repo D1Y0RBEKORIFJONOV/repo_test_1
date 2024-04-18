@@ -15,7 +15,7 @@ func CopyFile(source string, dest string) error {
 		return err
 	}
 	defer sourcefile.Close()
-	destfile, err := os.OpenFile(dest, os.O_WRONLY|os.O_CREATE, 0666)
+	destfile, err := os.OpenFile(dest, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		return err
 	}
@@ -52,11 +52,15 @@ func SaveTheCurrentStatOfTheFile(filename string) error {
 }
 
 func main() {
-	err := SaveTheCurrentStatOfTheFile(CURRENT_FILE_NAME)
+	//err := SaveTheCurrentStatOfTheFile(CURRENT_FILE_NAME)
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
+	err := CopyFile("/home/diyorbek/go/src/repo_test_1/16.Working_with_files_and_JSON/main.go_backup_2024-04-17_18-34-37.txt", CURRENT_FILE_NAME)
 	if err != nil {
 		fmt.Println(err)
-		return
+
 	}
-	fmt.Println("wgerwgg")
 
 }
