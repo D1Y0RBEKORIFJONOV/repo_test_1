@@ -19,7 +19,7 @@ func main() {
 	go ReadFileGO("file2.txt", DATA_INSIDE_FILE)
 	go ReadFileGO("file3.txt", DATA_INSIDE_FILE)
 	go ReadFileGO("file4.txt", DATA_INSIDE_FILE)
-
+	
 	for i := 0; i < 4; i++ {
 		fmt.Println(<-DATA_INSIDE_FILE)
 	}
