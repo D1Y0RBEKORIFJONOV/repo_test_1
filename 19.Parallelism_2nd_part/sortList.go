@@ -42,18 +42,21 @@ func sortList(head *ListNode) *ListNode {
 }
 
 func main() {
-	headNums := []int{-1, 5, 3, 4, 0}
-	head := &ListNode{}
-	curr := head
-	for _, headNum := range headNums {
-		curr.Next = &ListNode{Val: headNum}
-		curr = curr.Next
-	}
+	//headNums := []int{-1, 5, 3, 4, 0}
+	//head := &ListNode{}
+	//curr := head
+	//for _, headNum := range headNums {
+	//	curr.Next = &ListNode{Val: headNum}
+	//	curr = curr.Next
+	//}
+	//
+	//sorted := sortList(head)
+	//for sorted != nil {
+	//	fmt.Print(sorted.Val)
+	//	sorted = sorted.Next
+	//}
+	//fmt.Println()
 
-	sorted := sortList(head)
-	for sorted != nil {
-		fmt.Print(sorted.Val)
-		sorted = sorted.Next
-	}
-	fmt.Println()
+	str := "1234"
+	fmt.Println(cap([]byte(str)))
 }
