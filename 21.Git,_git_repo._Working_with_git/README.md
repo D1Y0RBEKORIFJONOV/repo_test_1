@@ -6,4 +6,3 @@ Dastur bir nechta `goroutine`larga bir vaqtning o'zida xaritadan yozuvlarni xavf
 
 
 
-

@@ -5,8 +5,13 @@ import (
 	"sync"
 )
 
+type Person struct {
+	Name string
+	Age  int
+}
+
 type SafeMap struct {
-	mu   sync.RWMutex
+	mu   sync.Mutex
 	data map[string]string
 }
 
@@ -45,21 +50,20 @@ func main() {
 	for i := 0; i < len(key); i++ {
 		wg.Add(1)
 		go safeMap.Set(key[i], value[i], &wg)
-
+		wg.Add(1)
 		go func(i int) {
-			wg.Add(1)
 			defer wg.Done()
 			safeMap.Get(key[i], data)
 		}(i)
+		wg.Add(1)
 		go func(i int) {
-			wg.Add(1)
 			defer wg.Done()
 			safeMap.Delete(key[i])
 		}(i)
 	}
 	wg.Wait()
-
 	for i := 0; i < len(data); i++ {
 		fmt.Print(<-data, " ")
 	}
+
 }
