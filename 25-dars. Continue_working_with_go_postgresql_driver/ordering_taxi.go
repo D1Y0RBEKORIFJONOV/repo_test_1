@@ -25,6 +25,7 @@ func main() {
 			wg.Done()
 		}()
 	}
+
 	go func() {
 		winner = <-resultChan
 		cancel()
